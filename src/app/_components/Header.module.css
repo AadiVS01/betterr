@@ -2,15 +2,8 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  /* Smooth animation for all changes */
-  transition: all 0.3s ease-in-out;
-  background-color: #164633; /* Initial state is transparent */
-}
-
-/* The state of the header after the user scrolls */
-.headerScrolled {
-  background-color: #017848; /* Changes to solid dark green */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  transition: background-color 0.5s ease-in-out;
+  background-color: var(--header-bg);
 }
 
 .nav {
@@ -26,11 +19,16 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
 }
 
 .logoLink {
   margin-right: 20px;
+}
+
+/* Use color variable for the logo fill */
+.logoLink svg path {
+  fill: var(--header-text-color, #fff);
+  transition: fill 0.5s ease-in-out;
 }
 
 .desktopNav {
@@ -41,12 +39,18 @@
   gap: 20px;
 }
 
+@media (max-width: 1024px) {
+  .desktopNav {
+    display: none;
+  }
+}
+
 .navItem {
   list-style: none;
 }
 
 .navLink {
-  color: #fff;
+  color: var(--header-text-color);
   padding: 10px 15px;
   font-size: 16px;
   font-weight: 500;
@@ -59,8 +63,8 @@
 }
 
 .navLink:hover {
-  background-color: #fff; /* White background on hover */
-  color: #017848; /* Dark green text on hover */
+  background-color: var(--header-text-color);
+  color: var(--header-bg);
 }
 
 .dropdownContainer {
@@ -68,15 +72,15 @@
 }
 
 .dropdownContainer:hover .navLink {
-  background-color: #fff;
-  color: #017848;
+  background-color: var(--header-text-color);
+  color: var(--header-bg);
 }
 
 .dropdownMenu {
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 280px; /* Provides a minimum width for the dropdown content */
+  min-width: 280px;
   background-color: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -88,7 +92,6 @@
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-/* Fix for the disappearing menu: show it on parent hover */
 .dropdownContainer:hover .dropdownMenu {
   visibility: visible;
   opacity: 1;
@@ -133,3 +136,125 @@
 .continueButton:hover {
   background-color: #00e676;
 }
+
+/* Mobile Sidebar */
+.hamburgerButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  color: var(--header-text-color);
+  transition: color 0.5s ease-in-out;
+}
+
+@media (max-width: 1024px) {
+  .hamburgerButton {
+    display: block;
+  }
+  .navActions {
+    display: none;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+  color: black;
+  z-index: 50;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarOpen {
+  transform: translateX(0);
+}
+
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebarLogo {
+  color: var(--header-text-color);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black
+}
+
+.mobileNavLinks {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.mobileDropdown {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 15px 0;
+  
+}
+
+.mobileDropdown summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.mobileDropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobileArrow {
+  color: black;
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobileDropdown[open] .mobileArrow {
+  transform: rotate(180deg);
+}
+
+.mobileDropdownList {
+  list-style: none;
+  padding: 10px 0 0 20px;
+}
+
+.mobileDropdownLink {
+  display: block;
+  padding: 10px 0;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.sidebarOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.sidebarOverlayVisible {
+  visibility: visible;
+  opacity: 1;}

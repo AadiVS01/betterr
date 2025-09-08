@@ -4,7 +4,6 @@
 
 .heroSection {
   position: relative;
-  overflow: hidden;
   background-color: var(--accent-primary);
 }
 
@@ -33,7 +32,6 @@
   z-index: 10;
   margin: auto;
   max-width: 1536px;
-  overflow: hidden;
   padding: 24px;
 }
 
@@ -111,7 +109,6 @@
   color: var(--accent-secondary);
 }
 
-/* Why We're Better Section */
 .whyBetterSection {
   margin: auto;
   display: flex;
@@ -120,6 +117,7 @@
   justify-content: space-between;
   gap: 48px;
   padding: 16px 24px 80px 24px;
+  background-color: #f1f1f1;
 }
 
 @media (min-width: 768px) {
@@ -185,9 +183,9 @@
   }
 }
 
-/* FAQ Section */
 .faqSection {
   padding-bottom: 24px;
+  background-color: #d1d5db;
 }
 
 @media (min-width: 1024px) {
@@ -227,6 +225,7 @@
 .faqTitle {
   font-weight: 700;
   color: var(--text-primary);
+  line-height: 1.25;
   font-size: 30px;
   letter-spacing: -0.025em;
   width: 100%;
@@ -241,13 +240,16 @@
 
 .faqButtons {
   display: flex;
+  flex-wrap: wrap; /* This allows buttons to wrap to a new line */
   gap: 12px;
-  overflow-x: scroll;
+  overflow-x: auto; /* Use auto for a better user experience */
 }
 
 @media (min-width: 1024px) {
   .faqButtons {
+    flex-wrap: nowrap; /* Prevent wrapping on larger screens */
     gap: 24px;
+    overflow-x: hidden; /* Hide scrollbar on larger screens */
   }
 }
 

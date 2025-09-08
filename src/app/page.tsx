@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className={styles.heroSection}>
+      <section id="hero-section" data-header-color="#164633" data-header-text-color="#fff" className={styles.heroSection}>
         <div className={styles.heroGradient}></div>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
@@ -36,7 +36,7 @@ export default function Home() {
           <div className={styles.heroImageContainer}>
             <img
               alt="Better Mortgage"
-              width={510}
+              width={300}
               height={810}
               decoding="async"
               src="https://media.better.com/better-com/homepage/ai-powered-fico.webp"
@@ -47,7 +47,7 @@ export default function Home() {
       </section>
 
       {/* Why We're Better Section */}
-      <section className={styles.whyBetterSection}>
+      <section id="why-better-section" data-header-color="#f1f1f1" data-header-text-color="#313131" className={styles.whyBetterSection}>
         <div className={styles.whyBetterContent}>
           <h2 className={styles.whyBetterTitle}>Find out why we’re better.</h2>
           <div className={styles.whyBetterText}>
@@ -89,7 +89,7 @@ export default function Home() {
       <hr className={styles.divider} />
 
       {/* FAQ Section */}
-      <section className={styles.faqSection}>
+      <section id="faq-section" data-header-color="#f1f1f1" data-header-text-color="#313131" className={styles.faqSection}>
         <div className={styles.faqHeader}>
           <h2 className={styles.faqTitle}>Got questions?<br />We've got answers</h2>
           <div className={styles.faqButtons}>
@@ -97,7 +97,7 @@ export default function Home() {
               variant={activeFaq === 'Our products' ? 'active' : 'tertiary'}
               onClick={() => setActiveFaq('Our products')}
             >
-              Our products
+              Our productsm
             </Button>
             <Button
               variant={activeFaq === 'Calculators' ? 'active' : 'tertiary'}
