@@ -1,95 +1,135 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+import { useState } from 'react';
+import Button from './_components/ui/Button';
+import FaqCard from './_components/FaqCard';
+import styles from './page.module.css';
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [activeTestimonial, setActiveTestimonial] = useState<string>('Paul');
+  const [activeFaq, setActiveFaq] = useState<string>('Our products');
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  return (
+    <>
+      {/* Hero Section */}
+      <section className={styles.heroSection}>
+        <div className={styles.heroGradient}></div>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>
+            The first<br />
+            <span className={styles.heroHighlight}>AI-powered</span> Mortgage
+          </h1>
+          <p className={styles.heroText}>
+            Our tech unlocks lower rates, higher chances of approval,<br />
+            and a lightning‑fast process from approval&nbsp;to&nbsp;closing. Over $100 billion funded.
+          </p>
+          <div className={styles.heroActions}>
+            <a href="/start">
+              <Button variant="primary">Start my pre-approval</Button>
+            </a>
+            <div className={styles.heroInfo}>
+              {/* SVG for info icon */}
+              <span>3 min</span>
+              <span>| No hard credit check</span>
+            </div>
+          </div>
+          <div className={styles.heroImageContainer}>
+            <img
+              alt="Better Mortgage"
+              width={510}
+              height={810}
+              decoding="async"
+              src="https://media.better.com/better-com/homepage/ai-powered-fico.webp"
+              className={styles.heroImage}
             />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+          </div>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </section>
+
+      {/* Why We're Better Section */}
+      <section className={styles.whyBetterSection}>
+        <div className={styles.whyBetterContent}>
+          <h2 className={styles.whyBetterTitle}>Find out why we’re better.</h2>
+          <div className={styles.whyBetterText}>
+            <Button variant="secondary" asLink="/b/our-stories">See all our stories</Button>
+            <div className={styles.reviews}>
+              {/* SVG for reviews */}
+              <span><strong>Excellent</strong></span>
+              <span><strong>4.4</strong> out of 5</span>
+            </div>
+          </div>
+        </div>
+        <div className={styles.whyBetterTestimonials}>
+          <div className={styles.testimonialButtons}>
+            <Button
+              variant={activeTestimonial === 'Paul' ? 'active' : 'tertiary'}
+              onClick={() => setActiveTestimonial('Paul')}
+            >
+              Paul
+            </Button>
+            <Button
+              variant={activeTestimonial === 'Amanda' ? 'active' : 'tertiary'}
+              onClick={() => setActiveTestimonial('Amanda')}
+            >
+              Amanda
+            </Button>
+            <Button
+              variant={activeTestimonial === 'Tiara' ? 'active' : 'tertiary'}
+              onClick={() => setActiveTestimonial('Tiara')}
+            >
+              Tiara
+            </Button>
+          </div>
+          <div className={styles.videoWrapper}>
+            {/* Image and play button for video testimonial */}
+          </div>
+        </div>
+      </section>
+
+      <hr className={styles.divider} />
+
+      {/* FAQ Section */}
+      <section className={styles.faqSection}>
+        <div className={styles.faqHeader}>
+          <h2 className={styles.faqTitle}>Got questions?<br />We've got answers</h2>
+          <div className={styles.faqButtons}>
+            <Button
+              variant={activeFaq === 'Our products' ? 'active' : 'tertiary'}
+              onClick={() => setActiveFaq('Our products')}
+            >
+              Our products
+            </Button>
+            <Button
+              variant={activeFaq === 'Calculators' ? 'active' : 'tertiary'}
+              onClick={() => setActiveFaq('Calculators')}
+            >
+              Calculators
+            </Button>
+            <Button
+              variant={activeFaq === 'Guides & FAQs' ? 'active' : 'tertiary'}
+              onClick={() => setActiveFaq('Guides & FAQs')}
+            >
+              Guides & FAQs
+            </Button>
+          </div>
+        </div>
+        <div className={styles.faqCards}>
+          <FaqCard
+            title="How AI Mortgage Lending is Transforming the Home Loan Process"
+            href="/content/ai-mortgage-lending"
+            imageSrc="https://media.better.com/better-com/homepage/learning-center/ai-mortgage.webp"
+            imageAlt="Woman on cellphone, seeing how AI is making the mortgage process easier and faster"
           />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <FaqCard
+            title="One Day Mortgage"
+            href="/b/one-day-mortgage"
+            imageSrc="https://media.better.com/better-com/homepage/learning-center/one-day-mortgage.webp"
+            imageAlt="One day mortgage"
+            description="Kick your home loan into hyperdrive. Going from locked rate to Commitment Letter takes weeks for traditional lenders. We do it in a single day. Traditional lenders deliver a Commitment Letter in a few weeks.1"
           />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          {/* ... Other FaqCard components ... */}
+        </div>
+      </section>
+    </>
   );
 }

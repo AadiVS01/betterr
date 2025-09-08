@@ -1,0 +1,135 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  /* Smooth animation for all changes */
+  transition: all 0.3s ease-in-out;
+  background-color: #164633; /* Initial state is transparent */
+}
+
+/* The state of the header after the user scrolls */
+.headerScrolled {
+  background-color: #017848; /* Changes to solid dark green */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+.nav {
+  margin: auto;
+  display: flex;
+  max-width: 1536px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.navLeft {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.logoLink {
+  margin-right: 20px;
+}
+
+.desktopNav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
+
+.navItem {
+  list-style: none;
+}
+
+.navLink {
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s, background-color 0.3s;
+  border-radius: 9999px;
+  line-height: 1.5;
+}
+
+.navLink:hover {
+  background-color: #fff; /* White background on hover */
+  color: #017848; /* Dark green text on hover */
+}
+
+.dropdownContainer {
+  position: relative;
+}
+
+.dropdownContainer:hover .navLink {
+  background-color: #fff;
+  color: #017848;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 280px; /* Provides a minimum width for the dropdown content */
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px 0;
+  margin-top: 10px;
+  z-index: 30;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* Fix for the disappearing menu: show it on parent hover */
+.dropdownContainer:hover .dropdownMenu {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdownList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdownLink {
+  display: block;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #313131;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.dropdownLink:hover {
+  background-color: #f1f1f1;
+}
+
+.navActions {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+  align-items: center;
+}
+
+.continueButton {
+  background-color: #00FF80;
+  color: #171717;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.continueButton:hover {
+  background-color: #00e676;
+}
