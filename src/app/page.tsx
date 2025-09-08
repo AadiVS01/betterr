@@ -36,8 +36,6 @@ export default function Home() {
           <div className={styles.heroImageContainer}>
             <img
               alt="Better Mortgage"
-              width={300}
-              height={810}
               decoding="async"
               src="https://media.better.com/better-com/homepage/ai-powered-fico.webp"
               className={styles.heroImage}

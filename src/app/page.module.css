@@ -33,6 +33,7 @@
   margin: auto;
   max-width: 1536px;
   padding: 24px;
+  padding-bottom:0px;
 }
 
 @media (min-width: 768px) {
@@ -108,7 +109,13 @@
   font-size: 12px;
   color: var(--accent-secondary);
 }
-
+.heroImageContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48px;
+  
+}
 .whyBetterSection {
   margin: auto;
   display: flex;
@@ -118,6 +125,16 @@
   gap: 48px;
   padding: 16px 24px 80px 24px;
   background-color: #f1f1f1;
+}
+.heroImage{
+  width:576px;
+  height:auto;
+}
+@media (max-width: 640px) {
+  .heroImage{
+    width:300px;
+    height:auto;
+  }
 }
 
 @media (min-width: 768px) {
