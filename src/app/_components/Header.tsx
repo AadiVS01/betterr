@@ -29,10 +29,11 @@ export default function Header() {
       }
     };
 
-    const initialSection = document.getElementById('hero-section');
-    if (initialSection) {
-      const initialBgColor = initialSection.getAttribute('data-header-color');
-      const initialTextColor = initialSection.getAttribute('data-header-text-color');
+    // Set initial header color based on first section with data-header-color
+    const firstSection = document.querySelector('section[data-header-color]');
+    if (firstSection) {
+      const initialBgColor = firstSection.getAttribute('data-header-color');
+      const initialTextColor = firstSection.getAttribute('data-header-text-color');
       if (initialBgColor) {
         document.documentElement.style.setProperty('--header-bg', initialBgColor);
       }
