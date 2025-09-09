@@ -14,6 +14,12 @@ const nextConfig = {
         hostname: 'images.unsplash.com',
         port: '',
         pathname: '/**',
+      },{
+        // Add this new block to allow images from cdn.builder.io
+        protocol: 'https',
+        hostname: 'cdn.builder.io',
+        port: '',
+        pathname: '/**',
       },
     ],
   },
