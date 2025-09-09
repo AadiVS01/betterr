@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Button from './_components/ui/Button';
 import FaqCard from './_components/FaqCard';
 import styles from './page.module.css';
+import Image from 'next/image';
 
 
   // Data for the FAQ cards
@@ -97,7 +98,7 @@ export default function Home() {
         </div>
         <div className={styles.whyBetterTestimonials}>
           <div className={styles.videoWrapper}>
-            <img src="D:\Project\assignmentt\betterr\public\f21.jpg" alt="" />
+            <Image src="/f21.jpg" alt="" width={400} height={300} />
             {/* Image and play button for video testimonial */}
           </div>
           <div className={styles.testimonialButtons}>
