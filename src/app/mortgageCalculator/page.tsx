@@ -77,7 +77,7 @@ const seoAccordionData = [
 ];
 
 // --- Main Page Component ---
-export default function Home() {
+export default function MortgageCalculator() {
   // State for calculator inputs
   const [homePrice, setHomePrice] = useState<number>(300000);
   const [downPayment, setDownPayment] = useState<number>(60000);
