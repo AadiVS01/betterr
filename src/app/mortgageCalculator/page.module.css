@@ -1,0 +1,185 @@
+/* src/app/_components/MortgageCalculator.module.css */
+.title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.875rem; /* text-2xl */
+  line-height: 2.25rem;
+  margin-bottom: 3rem;
+}
+.calculatorSection {
+  background-color: #f0f7f1;
+  padding: 4rem 1.5rem;
+}
+.container {
+  margin: auto;
+  max-width: 1280px;
+}
+.title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+  max-width: 500px;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.formContainer {
+  background-color: white;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+  margin: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.inputWrapper,
+.selectWrapper {
+  position: relative;
+  height: 3.5rem;
+}
+.inputWrapper label,
+.selectWrapper label {
+  color: #6b7280;
+  position: absolute;
+  left: 1rem;
+  top: 0.5rem;
+  font-size: 0.75rem;
+}
+.inputWrapper input,
+.selectWrapper select {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 1.5rem 1rem 0.5rem 1rem;
+  font-weight: 700;
+  font-size: 1rem;
+  background-color: inherit;
+  outline: none;
+}
+.inputWrapper input:focus,
+.selectWrapper select:focus {
+  border-color: #017848;
+  box-shadow: 0 0 0 3px inset rgba(1, 120, 72, 0.2);
+}
+.inputWrapper span {
+  position: absolute;
+  top: 1.75rem;
+  font-weight: 700;
+  color: #333;
+}
+.inputWrapper span:first-of-type { left: 0.75rem; }
+.downPaymentPercent .inputWrapper span { right: 0.75rem; }
+.inputWrapper input[id="homePrice"],
+.inputWrapper input[id="downPayment"] {
+  padding-left: 2rem;
+}
+.downPaymentGroup { display: flex; gap: 1rem; }
+.downPaymentDollars { width: 75%; }
+.downPaymentPercent { width: 25%; }
+.selectWrapper select { appearance: none; -webkit-appearance: none; }
+.selectWrapper::after { content: '▾'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); pointer-events: none; font-size: 1.5rem; }
+.rangeSlider { width: 100%; cursor: pointer; }
+.summarySide { width: 100%; text-align: center; }
+.summaryLabel { font-weight: 700; margin-bottom: 0.5rem; }
+.summaryAmount { font-size: 1.875rem; font-weight: 700; margin-bottom: 1.5rem; }
+.ctaButton { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 3rem; background-color: #017848; color: white; border-radius: 0.5rem; font-weight: 700; text-decoration: none; transition: background-color 0.3s ease; }
+.ctaButton:hover { background-color: #005634; }
+
+/* Breakdown Styles */
+.breakdownContainer { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+.breakdownTitle { font-weight: 700; font-size: 1.125rem; margin-bottom: 0.5rem; }
+.breakdownTotal { font-weight: 700; font-size: 1.5rem; margin-bottom: 1.5rem; }
+.breakdownBar { display: flex; width: 100%; height: 2.5rem; border-radius: 9999px; overflow: hidden; background-color: #e5e7eb; }
+.barSegment { height: 100%; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; transition: width 0.3s ease; }
+.breakdownRow { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.breakdownLabel { display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; }
+.colorPill { width: 5px; height: 1rem; border-radius: 2px; }
+.breakdownValue { font-weight: 700; display: flex; align-items: center; gap: 0.25rem; }
+.breakdownInput { position: relative; }
+.breakdownInput span { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: #6b7280; }
+.breakdownInput input { border: 1px solid #d1d5db; border-radius: 0.5rem; width: 160px; text-align: right; padding: 0.5rem 0.75rem 0.5rem 1.75rem; font-weight: 700; }
+.copyButton { background-color: #e5e7eb; border: none; padding: 0.75rem 1rem; border-radius: 0.5rem; font-weight: 700; cursor: pointer; }
+.copyButton:hover { background-color: #d1d5db; }
+.accordionItem { border-top: 1px solid #e5e7eb; padding-top: 1rem; }
+.accordionHeader { display: flex; justify-content: space-between; align-items: center; width: 100%; background: none; border: none; cursor: pointer; padding: 0; }
+.accordionIcon { transition: transform 0.3s ease-in-out; }
+.accordionIconOpen { transform: rotate(180deg); }
+.accordionContent { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+.accordionContentOpen { max-height: 300px; }
+.accordionInnerContent { padding-top: 1rem; padding-left: 1.25rem; }
+.checkboxRow { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; }
+.checkboxRow label { cursor: pointer; font-size: 0.875rem; }
+
+/* --- Media Queries --- */
+@media (min-width: 1024px) {
+  .title { font-size: 1.875rem; }
+  .formContainer { flex-direction: row; align-items: flex-start; padding: 2rem; }
+  .formGrid { grid-template-columns: repeat(5, 1fr); width: 100%; }
+  .colSpan1 { grid-column: span 1; }
+  .colSpan2 { grid-column: span 2; }
+  .colSpan3 { grid-column: span 3; }
+  .colSpanFull { grid-column: 1 / -1; }
+  .rangeSliderGroup { margin-top: 0.5rem; }
+  .summarySide { max-width: 225px; text-align: left; }
+  .ctaButton { min-width: 220px; }
+  .breakdownContainer { grid-template-columns: repeat(2, 1fr); gap: 4rem; align-items: flex-start; }
+  .breakdownRight { padding-top: 3.5rem; }
+}
+.section {
+  background-color: #FFFDFA; /* Approximated from site */
+  padding: 5rem 1.5rem;
+}
+.stepsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1280px;
+  margin: auto;
+}
+
+.stepCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: #F0F7F1;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+.stepNumber {
+  font-size: 5.5rem; /* text-8xl */
+  font-weight: 700;
+  color: #1EE07F; /* A green from the design */
+  line-height: 1;
+}
+
+.stepTitle {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.stepDescription {
+  font-size: 1rem;
+  color: #555; /* text-textSecondary */
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .stepsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .title {
+    font-size: 2.25rem; /* text-4xl */
+  }
+}
+
+.header{
+    background-color: #FFFDFA;
+}

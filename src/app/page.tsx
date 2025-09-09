@@ -5,6 +5,42 @@ import Button from './_components/ui/Button';
 import FaqCard from './_components/FaqCard';
 import styles from './page.module.css';
 
+
+  // Data for the FAQ cards
+  const faqCardData = [
+    {
+      title: 'How AI Mortgage Lending is Transforming the Home Loan Process',
+      href: '/content/ai-mortgage-lending',
+      imageSrc: '',
+      imageAlt: 'Woman on cellphone, seeing how AI is making the mortgage process easier and faster',
+      layout: 'vertical',
+    },
+    {
+      title: 'One Day Mortgage',
+      href: '/b/one-day-mortgage',
+      imageSrc: '',
+        imageAlt: 'One day mortgage',
+      description:
+        'Kick your home loan into hyperdrive. Going from locked rate to Commitment Letter takes weeks for traditional lenders...',
+      layout: 'horizontal-wide',
+    },
+    {
+      title: 'Better HELOC',
+      href: '/b/heloc',
+      imageSrc:'',
+      imageAlt: 'Couple on a laptop',
+      description:
+        'Introducing One Day HELOC™—your express lane to getting cash from your home with our Home Equity Line of Credit...',
+      layout: 'horizontal-wide-reversed',
+    },
+    {
+      title: 'Insurance',
+      href: 'https://www.bettercover.com',
+      imageSrc: '',
+      imageAlt: 'Insurance',
+      layout: 'vertical',
+    },
+  ];
 export default function Home() {
   const [activeTestimonial, setActiveTestimonial] = useState<string>('Paul');
   const [activeFaq, setActiveFaq] = useState<string>('Our products');
@@ -45,19 +81,25 @@ export default function Home() {
       </section>
 
       {/* Why We're Better Section */}
-      <section id="why-better-section" data-header-color="#f1f1f1" data-header-text-color="#313131" className={styles.whyBetterSection}>
+      <section id="why-better-section" data-header-color="#ffffffff" data-header-text-color="#313131" className={styles.whyBetterSection}>
         <div className={styles.whyBetterContent}>
           <h2 className={styles.whyBetterTitle}>Find out why we’re better.</h2>
           <div className={styles.whyBetterText}>
             <Button variant="secondary" asLink="/b/our-stories">See all our stories</Button>
             <div className={styles.reviews}>
               {/* SVG for reviews */}
-              <span><strong>Excellent</strong></span>
+              <br /><br />
+              <span><strong>   Excellent</strong></span>
+              
               <span><strong>4.4</strong> out of 5</span>
             </div>
           </div>
         </div>
         <div className={styles.whyBetterTestimonials}>
+          <div className={styles.videoWrapper}>
+            <img src="D:\Project\assignmentt\betterr\public\f21.jpg" alt="" />
+            {/* Image and play button for video testimonial */}
+          </div>
           <div className={styles.testimonialButtons}>
             <Button
               variant={activeTestimonial === 'Paul' ? 'active' : 'tertiary'}
@@ -78,56 +120,62 @@ export default function Home() {
               Tiara
             </Button>
           </div>
-          <div className={styles.videoWrapper}>
-            {/* Image and play button for video testimonial */}
-          </div>
+          
         </div>
+        
       </section>
 
-      <hr className={styles.divider} />
+     
 
       {/* FAQ Section */}
-      <section id="faq-section" data-header-color="#f1f1f1" data-header-text-color="#313131" className={styles.faqSection}>
-        <div className={styles.faqHeader}>
-          <h2 className={styles.faqTitle}>Got questions?<br />We've got answers</h2>
-          <div className={styles.faqButtons}>
-            <Button
-              variant={activeFaq === 'Our products' ? 'active' : 'tertiary'}
-              onClick={() => setActiveFaq('Our products')}
-            >
-              Our productsm
-            </Button>
-            <Button
-              variant={activeFaq === 'Calculators' ? 'active' : 'tertiary'}
-              onClick={() => setActiveFaq('Calculators')}
-            >
-              Calculators
-            </Button>
-            <Button
-              variant={activeFaq === 'Guides & FAQs' ? 'active' : 'tertiary'}
-              onClick={() => setActiveFaq('Guides & FAQs')}
-            >
-              Guides & FAQs
-            </Button>
-          </div>
-        </div>
-        <div className={styles.faqCards}>
-          <FaqCard
-            title="How AI Mortgage Lending is Transforming the Home Loan Process"
-            href="/content/ai-mortgage-lending"
-            imageSrc="https://media.better.com/better-com/homepage/learning-center/ai-mortgage.webp"
-            imageAlt="Woman on cellphone, seeing how AI is making the mortgage process easier and faster"
-          />
-          <FaqCard
-            title="One Day Mortgage"
-            href="/b/one-day-mortgage"
-            imageSrc="https://media.better.com/better-com/homepage/learning-center/one-day-mortgage.webp"
-            imageAlt="One day mortgage"
-            description="Kick your home loan into hyperdrive. Going from locked rate to Commitment Letter takes weeks for traditional lenders. We do it in a single day. Traditional lenders deliver a Commitment Letter in a few weeks.1"
-          />
-          {/* ... Other FaqCard components ... */}
-        </div>
-      </section>
+      
+      <section
+  id="faq-section"
+  data-header-color="#ffffffff"
+  data-header-text-color="#313131"
+  className={styles.faqSection}
+>
+  <div className={styles.faqHeader}>
+    <h2 className={styles.faqTitle}>
+      Got questions?
+      <br />
+      We&apos;ve got answers
+    </h2>
+    <div className={styles.faqButtons}>
+      <Button
+        variant={activeFaq === 'Our products' ? 'active' : 'tertiary'}
+        onClick={() => setActiveFaq('Our products')}
+      >
+        Our products
+      </Button>
+      <Button
+        variant={activeFaq === 'Calculators' ? 'active' : 'tertiary'}
+        onClick={() => setActiveFaq('Calculators')}
+      >
+        Calculators
+      </Button>
+      <Button
+        variant={activeFaq === 'Guides & FAQs' ? 'active' : 'tertiary'}
+        onClick={() => setActiveFaq('Guides & FAQs')}
+      >
+        Guides & FAQs
+      </Button>
+    </div>
+  </div>
+  <div className={styles.faqCards}>
+    {faqCardData.map((card, index) => (
+      <FaqCard
+        key={index}
+        title={card.title}
+        href={card.href}
+        imageSrc={card.imageSrc}
+        imageAlt={card.imageAlt}
+        description={card.description}
+        layout={card.layout as any} // Cast as 'any' to match prop type if needed
+      />
+    ))}
+  </div>
+</section>
     </>
   );
 }

@@ -1,12 +1,12 @@
 :root {
   --accent-primary: #164633;
   --accent-secondary: #a4a8a4;
-  --text-primary: #313131;
+  --text-primary: #171616;
   --text-secondary: #a4a8a4;
   --text-inverse-primary: #fff;
   --text-inverse-tertiary: #f7f7f7;
   --interactive-primary: #02975b;
-  --interactive-foreground-primary: #fff;
+  --interactive-foreground-primary: #ffffff;
   --interactive-foreground-inverse-primary: #171717;
   --interactive-foreground-inverse-tertiary: #f7f7f7;
   --background-secondary: #f1f1f1;
