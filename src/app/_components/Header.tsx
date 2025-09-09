@@ -75,7 +75,7 @@ export default function Header() {
                   <li><Link href="/preapproval/nxt-purchase" className={styles.dropdownLink}>Apply now</Link></li>
                   <li><Link href="/mortgage-rates" className={styles.dropdownLink}>Purchase rates</Link></li>
                   <li><Link href="/how-much-house-can-i-afford" className={styles.dropdownLink}>Affordability calculator</Link></li>
-                  <li><Link href="/MortgageCalculator" className={styles.dropdownLink}>Mortgage calculator</Link></li>
+                  <li><Link href="/mortgage-calculator" className={styles.dropdownLink}>Mortgage calculator</Link></li>
                   <li><Link href="/rent-vs-buy-calculator" className={styles.dropdownLink}>Rent vs buy calculator</Link></li>
                   <li><Link href="/find-an-agent" className={styles.dropdownLink}>Find an agent</Link></li>
                   <li><Link href="/va-loan" className={styles.dropdownLink}>VA loans</Link></li>
@@ -162,7 +162,7 @@ export default function Header() {
               <li><Link href="/preapproval/nxt-purchase" className={styles.mobileDropdownLink}>Apply now</Link></li>
               <li><Link href="/mortgage-rates" className={styles.mobileDropdownLink}>Purchase rates</Link></li>
               <li><Link href="/how-much-house-can-i-afford" className={styles.mobileDropdownLink}>Affordability calculator</Link></li>
-              <li><Link href="/MortgageCalculator" className={styles.mobileDropdownLink}>Mortgage calculator</Link></li>
+              <li><Link href="/mortgage-calculator" className={styles.mobileDropdownLink}>Mortgage calculator</Link></li>
               <li><Link href="/rent-vs-buy-calculator" className={styles.mobileDropdownLink}>Rent vs buy calculator</Link></li>
               <li><Link href="/find-an-agent" className={styles.mobileDropdownLink}>Find an agent</Link></li>
               <li><Link href="/va-loan" className={styles.mobileDropdownLink}>VA loans</Link></li>
