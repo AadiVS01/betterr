@@ -6,12 +6,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './page.module.css';
 
 import { ChevronDown } from 'lucide-react';
-interface CallToActionProps {
-  title: string;
-  buttonText: string;
-  buttonHref: string;
-  subtitle: React.ReactNode;
-}
+
 const stepsData = [
   {
     number: 1,

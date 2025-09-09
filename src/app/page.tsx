@@ -2,46 +2,44 @@
 
 import { useState } from 'react';
 import Button from './_components/ui/Button';
-import FaqCard from './_components/FaqCard';
+import FaqCard, { FaqCardLayout } from './_components/FaqCard'; // Import the type
 import styles from './page.module.css';
-import Image from 'next/image';
+import Image from 'next/image'; // Make sure Image is imported
 
+// Data for the FAQ cards with valid placeholder image sources
+const faqCardData = [
+  {
+    title: 'How AI Mortgage Lending is Transforming the Home Loan Process',
+    href: '/content/ai-mortgage-lending',
+    imageSrc: 'https://media.better.com/better-com/homepage/learning-center/ai-mortgage.webp',
+    imageAlt: 'Woman on cellphone, seeing how AI is making the mortgage process easier and faster',
+    layout: 'vertical' as FaqCardLayout,
+  },
+  {
+    title: 'One Day Mortgage',
+    href: '/b/one-day-mortgage',
+    imageSrc: 'https://media.better.com/better-com/homepage/learning-center/one-day-mortgage.webp',
+    imageAlt: 'One day mortgage',
+    description: 'Kick your home loan into hyperdrive. Going from locked rate to Commitment Letter takes weeks for traditional lenders...',
+    layout: 'horizontal-wide' as FaqCardLayout,
+  },
+  {
+    title: 'Better HELOC',
+    href: '/b/heloc',
+    imageSrc: 'https://media.better.com/better-com/homepage/learning-center/better-heloc.webp',
+    imageAlt: 'Couple on a laptop',
+    description: 'Introducing One Day HELOC™—your express lane to getting cash from your home with our Home Equity Line of Credit...',
+    layout: 'horizontal-wide-reversed' as FaqCardLayout,
+  },
+  {
+    title: 'Insurance',
+    href: 'https://www.bettercover.com',
+    imageSrc: 'https://media.better.com/better-com/homepage/learning-center/insurance.webp',
+    imageAlt: 'Insurance',
+    layout: 'vertical' as FaqCardLayout,
+  },
+];
 
-  // Data for the FAQ cards
-  const faqCardData = [
-    {
-      title: 'How AI Mortgage Lending is Transforming the Home Loan Process',
-      href: '/content/ai-mortgage-lending',
-      imageSrc: '',
-      imageAlt: 'Woman on cellphone, seeing how AI is making the mortgage process easier and faster',
-      layout: 'vertical',
-    },
-    {
-      title: 'One Day Mortgage',
-      href: '/b/one-day-mortgage',
-      imageSrc: '',
-        imageAlt: 'One day mortgage',
-      description:
-        'Kick your home loan into hyperdrive. Going from locked rate to Commitment Letter takes weeks for traditional lenders...',
-      layout: 'horizontal-wide',
-    },
-    {
-      title: 'Better HELOC',
-      href: '/b/heloc',
-      imageSrc:'',
-      imageAlt: 'Couple on a laptop',
-      description:
-        'Introducing One Day HELOC™—your express lane to getting cash from your home with our Home Equity Line of Credit...',
-      layout: 'horizontal-wide-reversed',
-    },
-    {
-      title: 'Insurance',
-      href: 'https://www.bettercover.com',
-      imageSrc: '',
-      imageAlt: 'Insurance',
-      layout: 'vertical',
-    },
-  ];
 export default function Home() {
   const [activeTestimonial, setActiveTestimonial] = useState<string>('Paul');
   const [activeFaq, setActiveFaq] = useState<string>('Our products');
@@ -71,10 +69,12 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.heroImageContainer}>
-            <img
-              alt="Better Mortgage"
-              decoding="async"
+            {/* FIX: Replaced <img> with next/image <Image> */}
+            <Image
+              alt="Better Mortgage AI-powered FICO"
               src="https://media.better.com/better-com/homepage/ai-powered-fico.webp"
+              width={576}
+              height={324} // Provide an estimated height
               className={styles.heroImage}
             />
           </div>
@@ -90,7 +90,7 @@ export default function Home() {
             <div className={styles.reviews}>
               {/* SVG for reviews */}
               <br /><br />
-              <span><strong>   Excellent</strong></span>
+              <span><strong>   Excellent</strong></span>
               
               <span><strong>4.4</strong> out of 5</span>
             </div>
@@ -98,8 +98,7 @@ export default function Home() {
         </div>
         <div className={styles.whyBetterTestimonials}>
           <div className={styles.videoWrapper}>
-            <Image src="/f21.jpg" alt="" width={400} height={300} />
-            {/* Image and play button for video testimonial */}
+            <Image src="/f21.jpg" alt="Testimonial video thumbnail" width={400} height={711} />
           </div>
           <div className={styles.testimonialButtons}>
             <Button
@@ -121,62 +120,59 @@ export default function Home() {
               Tiara
             </Button>
           </div>
-          
         </div>
-        
       </section>
 
-     
-
       {/* FAQ Section */}
-      
       <section
-  id="faq-section"
-  data-header-color="#ffffffff"
-  data-header-text-color="#313131"
-  className={styles.faqSection}
->
-  <div className={styles.faqHeader}>
-    <h2 className={styles.faqTitle}>
-      Got questions?
-      <br />
-      We&apos;ve got answers
-    </h2>
-    <div className={styles.faqButtons}>
-      <Button
-        variant={activeFaq === 'Our products' ? 'active' : 'tertiary'}
-        onClick={() => setActiveFaq('Our products')}
+        id="faq-section"
+        data-header-color="#ffffffff"
+        data-header-text-color="#313131"
+        className={styles.faqSection}
       >
-        Our products
-      </Button>
-      <Button
-        variant={activeFaq === 'Calculators' ? 'active' : 'tertiary'}
-        onClick={() => setActiveFaq('Calculators')}
-      >
-        Calculators
-      </Button>
-      <Button
-        variant={activeFaq === 'Guides & FAQs' ? 'active' : 'tertiary'}
-        onClick={() => setActiveFaq('Guides & FAQs')}
-      >
-        Guides & FAQs
-      </Button>
-    </div>
-  </div>
-  <div className={styles.faqCards}>
-    {faqCardData.map((card, index) => (
-      <FaqCard
-        key={index}
-        title={card.title}
-        href={card.href}
-        imageSrc={card.imageSrc}
-        imageAlt={card.imageAlt}
-        description={card.description}
-        layout={card.layout as any} // Cast as 'any' to match prop type if needed
-      />
-    ))}
-  </div>
-</section>
+        <div className={styles.faqHeader}>
+          <h2 className={styles.faqTitle}>
+            Got questions?
+            <br />
+            We&apos;ve got answers
+          </h2>
+          <div className={styles.faqButtons}>
+            <Button
+              variant={activeFaq === 'Our products' ? 'active' : 'tertiary'}
+              onClick={() => setActiveFaq('Our products')}
+            >
+              Our products
+            </Button>
+            <Button
+              variant={activeFaq === 'Calculators' ? 'active' : 'tertiary'}
+              onClick={() => setActiveFaq('Calculators')}
+            >
+              Calculators
+            </Button>
+            <Button
+              variant={activeFaq === 'Guides & FAQs' ? 'active' : 'tertiary'}
+              onClick={() => setActiveFaq('Guides & FAQs')}
+            >
+              Guides & FAQs
+            </Button>
+          </div>
+        </div>
+        <div className={styles.faqCards}>
+          {faqCardData.map((card, index) => (
+            <FaqCard
+              key={index}
+              title={card.title}
+              href={card.href}
+              imageSrc={card.imageSrc}
+              imageAlt={card.imageAlt}
+              description={card.description}
+              // FIX: Removed 'as any' and used the imported type
+              layout={card.layout} 
+            />
+          ))}
+        </div>
+      </section>
     </>
   );
 }
+
