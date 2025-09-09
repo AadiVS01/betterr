@@ -23,7 +23,7 @@ export default function InfoSection() {
         <button>
           <Image
             alt="Vishal Garg"
-            
+            src={'https://media.better.com/better-com/about-us/vishal-garg.webp'}
             layout="fill"
             objectFit="cover"
           />
