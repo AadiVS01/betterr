@@ -53,7 +53,7 @@ const companyServices = [
 const footerLinks = {
   Resources: [
     { text: 'Home affordability calculator', href: '/how-much-house-can-i-afford' },
-    { text: 'Mortgage calculator', href: '/MortgageCalculator' },
+    { text: 'Mortgage calculator', href: '/mortgage-calculator' },
     { text: 'Rent vs buy calculator', href: '/rent-vs-buy-calculator' },
     { text: 'HELOC payment calculator', href: '/heloc-calculator' },
     { text: 'Buy a home', href: '/content/buying-a-house-online' },
